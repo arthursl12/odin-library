@@ -1,9 +1,20 @@
-const name = "James";
+function Book(title, author, pages, read) {
+  this.title = title;
+  this.author = author;
+  this.pages = pages;
+  this.read = read;
 
-const person = { first: name };
+  this.info = () => {
+    let readString = "";
+    if (this.read) {
+      readString = "already read";
+    } else {
+      readString = "not read yet";
+    }
+    let str = `${this.title} by ${this.author}, ${this.pages} pages, ${readString}`;
+    return str;
+  };
+}
 
-console.log(person);
-
-const sayHelloLinting = (fName) => {
-  console.log(`Hello linting, ${fName}`);
-};
+let theHobbit = new Book("The Hobbit", "J.R.R Tolkien", 295, false);
+console.log(theHobbit.info());
