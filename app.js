@@ -65,10 +65,26 @@ function newBookListener() {
 newBookListener();
 
 // Prevent default submitting behaviour of trying to send data to the server
-// TODO: data submission via JS
+// WIP: data submission via JS
+function submitBook(e) {
+  e.preventDefault(); // Avoid sending to server (default behaviour)
+  console.log(e);
+
+  let form = document.querySelector("#newbookform");
+  formData = new FormData(form);
+  for (const p of formData.entries()) {
+    console.log(p);
+  }
+  if (formData.get("bookread")) {
+    console.log(formData.get("bookread"));
+  } else {
+    console.log("Not read");
+  }
+  form.reset();
+}
 function submitFormListener() {
-  let btn = document.querySelector("#submitform");
-  btn.addEventListener("click", e => e.preventDefault());
+  let form = document.querySelector("#newbookform");
+  form.addEventListener("submit", submitBook);
 }
 submitFormListener();
 
