@@ -47,6 +47,30 @@ function displayBooks() {
   });
 }
 
+function toggleForm(e) {
+  let form = document.querySelector("#newbookform");
+  if (form.classList.contains("hidden")) {
+    form.classList.remove("hidden");
+  } else {
+    form.classList.add("hidden");
+  }
+}
+
+function newBookListener() {
+  let btn = document.querySelector("#newbook");
+  console.log("clickevent");
+  btn.addEventListener("click", toggleForm);
+}
+newBookListener();
+
+
+
+
+
+
+
+
+
 addBookToLibrary(new Book("The Hobbit", "J.R.R Tolkien", 295, false));
 addBookToLibrary(
   new Book("Memórias Póstumas de Brás Cubas", "Machado de Assis", 320, false)
@@ -54,7 +78,5 @@ addBookToLibrary(
 addBookToLibrary(
   new Book("20,000 Leagues Under the Sea", "Jules Verne", 316, true)
 );
-
 displayBooks();
-
-console.log(myLibrary);
+// console.log(myLibrary);
