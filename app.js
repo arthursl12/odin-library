@@ -47,6 +47,8 @@ function displayBooks() {
   });
 }
 
+
+
 function toggleForm(e) {
   let form = document.querySelector("#newbookform");
   if (form.classList.contains("hidden")) {
@@ -55,7 +57,6 @@ function toggleForm(e) {
     form.classList.add("hidden");
   }
 }
-
 function newBookListener() {
   let btn = document.querySelector("#newbook");
   console.log("clickevent");
@@ -63,7 +64,13 @@ function newBookListener() {
 }
 newBookListener();
 
-
+// Prevent default submitting behaviour of trying to send data to the server
+// TODO: data submission via JS
+function submitFormListener() {
+  let btn = document.querySelector("#submitform");
+  btn.addEventListener("click", e => e.preventDefault());
+}
+submitFormListener();
 
 
 

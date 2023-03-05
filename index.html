@@ -13,7 +13,32 @@
     <div class="header">
       <button id="newbook">New Book</button>
       <form id="newbookform" action="submit" class="hidden">
-        TESTE
+        <div class="form-row">
+          <div class="form-field">
+            <label name="booktitle">Title:</label>
+            <input type="text" name="booktitle" 
+              placeholder="The Hobbit" minlength="1" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label name="bookauthor">Author:</label>
+            <input type="text" name="bookauthor" placeholder="J.R.R Tolkien" minlength="1" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label name="bookpages"># of pages:</label>
+            <input type="number" name="bookpages" placeholder="320" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label name="bookread">Already read?</label>
+            <input type="checkbox" name="bookread" required>
+          </div>
+        </div>
+        <button id="submitform">Submit</button>
       </form>
     </div>
     <div id="booklist">Test</div>
