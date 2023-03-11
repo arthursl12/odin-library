@@ -16,6 +16,10 @@ function Book(title, author, pages, read) {
     let str = `${this.title} by ${this.author}, ${this.pages} pages, ${readString}`;
     return str;
   };
+
+  this.toggleRead = () => {
+    this.read = this.read ? false : true;
+  }
 }
 
 function addBookToLibrary(b) {
@@ -58,6 +62,7 @@ function displayBooks() {
 
     newb = document.createElement("button");
     newb.textContent = "Read";
+    newb.addEventListener('click', eventToggleRead);
     buttonDiv.appendChild(newb);
 
     bookcard.appendChild(buttonDiv);
@@ -76,6 +81,18 @@ function removeBook(e) {
 
   // Remove said index from library and update display
   myLibrary.splice(idx, 1); // Remove ONE element, starting on index 'idx' 
+  displayBooks();
+}
+
+function eventToggleRead(e) {
+  // Find index stored in bookcard data attribute
+  let button = e.target;
+  let buttonContainer = button.parentElement;
+  let bookcard = buttonContainer.parentElement;
+  let idx = bookcard.dataset.bookIndex;
+
+  // Update said book's read state and update display
+  myLibrary[idx].toggleRead();
   displayBooks();
 }
 
