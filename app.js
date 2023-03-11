@@ -32,6 +32,7 @@ function displayBooks() {
   // Add an entry for each book
   myLibrary.forEach((book) => {
     let bookcard = document.createElement("div");
+    bookcard.classList.add("bookcard");
 
     // Loop through all properties of Book
     Object.keys(book).forEach((key) => {
@@ -43,6 +44,20 @@ function displayBooks() {
         bookcard.appendChild(newp);
       }
     });
+
+    // Add buttons div to remove and read
+    let buttonDiv = document.createElement("div");
+    buttonDiv.classList.add("entry-buttons");
+  
+    let newb = document.createElement("button");
+    newb.textContent = "Remove";
+    buttonDiv.appendChild(newb);
+
+    newb = document.createElement("button");
+    newb.textContent = "Read";
+    buttonDiv.appendChild(newb);
+
+    bookcard.appendChild(buttonDiv);
     booklist.appendChild(bookcard);
   });
 }
@@ -82,6 +97,7 @@ function submitBook(e) {
   }
   form.reset();
 }
+
 function submitFormListener() {
   let form = document.querySelector("#newbookform");
   form.addEventListener("submit", submitBook);
