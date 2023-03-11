@@ -30,9 +30,11 @@ function displayBooks() {
   }
 
   // Add an entry for each book
+  let idx = 0;
   myLibrary.forEach((book) => {
     let bookcard = document.createElement("div");
     bookcard.classList.add("bookcard");
+    bookcard.setAttribute('data-book-index', idx);
 
     // Loop through all properties of Book
     Object.keys(book).forEach((key) => {
@@ -59,6 +61,8 @@ function displayBooks() {
 
     bookcard.appendChild(buttonDiv);
     booklist.appendChild(bookcard);
+
+    idx++;
   });
 }
 
@@ -90,12 +94,19 @@ function submitBook(e) {
   for (const p of formData.entries()) {
     console.log(p);
   }
+  let bookread = false;
   if (formData.get("bookread")) {
+    bookread = true;
     console.log(formData.get("bookread"));
   } else {
+    bookread = false;
     console.log("Not read");
   }
   form.reset();
+
+  let newBook = new Book(formData.get("booktitle"), formData.get("bookauthor"), formData.get("bookpages"), bookread);
+  addBookToLibrary(newBook);
+  displayBooks();
 }
 
 function submitFormListener() {
