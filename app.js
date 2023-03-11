@@ -25,8 +25,8 @@ function addBookToLibrary(b) {
 function displayBooks() {
   // Clear current display
   let booklist = document.querySelector("#booklist");
-  if (booklist.hasChildNodes()) {
-    booklist.childNodes.forEach((child) => booklist.removeChild(child));
+  while (booklist.firstChild) {
+    booklist.removeChild(booklist.lastChild);
   }
 
   // Add an entry for each book
@@ -53,6 +53,7 @@ function displayBooks() {
   
     let newb = document.createElement("button");
     newb.textContent = "Remove";
+    newb.addEventListener('click', removeBook);
     buttonDiv.appendChild(newb);
 
     newb = document.createElement("button");
@@ -66,7 +67,17 @@ function displayBooks() {
   });
 }
 
+function removeBook(e) {
+  // Find index stored in bookcard data attribute
+  let button = e.target;
+  let buttonContainer = button.parentElement;
+  let bookcard = buttonContainer.parentElement;
+  let idx = bookcard.dataset.bookIndex;
 
+  // Remove said index from library and update display
+  myLibrary.splice(idx, 1); // Remove ONE element, starting on index 'idx' 
+  displayBooks();
+}
 
 function toggleForm(e) {
   let form = document.querySelector("#newbookform");
@@ -84,7 +95,6 @@ function newBookListener() {
 newBookListener();
 
 // Prevent default submitting behaviour of trying to send data to the server
-// WIP: data submission via JS
 function submitBook(e) {
   e.preventDefault(); // Avoid sending to server (default behaviour)
   console.log(e);
