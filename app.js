@@ -38,6 +38,10 @@ function bookListHeader() {
       let newp = document.createElement("p");
       newp.textContent = `${key.toUpperCase()}`;
       newp.classList.add(key);
+
+      if (key === "pages") {
+        newp.classList.add("right-align");
+      }
       header.appendChild(newp);
     }
   });
@@ -74,6 +78,9 @@ function displayBooks() {
         let newp = document.createElement("p");
         newp.textContent = `${book[key]}`;
         newp.classList.add(key);
+        if (key === "pages") {
+          newp.classList.add("right-align");
+        }
         bookcard.appendChild(newp);
       }
     });

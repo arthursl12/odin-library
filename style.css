@@ -1,36 +1,114 @@
 :root{
     --color--gray: #9B9A94;
+    --color--dark-brown: #978782;
     --color--brown: #E0CBC4;
     --color--light-brown: #EBE4DE;
     --color--black: #131310;
 }
 
 body{
+    padding: 0;
+    margin: 0;
     font-family: 'Khula', sans-serif;
     font-weight: 400;
     background-color: var(--color--light-brown);
+
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
+/* || HEADER */
+.header {
+    background-color: var(--color--brown);
+    color: var(--color--black);
+    padding: 8px 30px;
 
-.hidden{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header > h1{
+    font-weight: 1000;
+    font-size: 32px;
+}
+
+#newbook {
+    align-self: flex-start;
+    padding: 0.5rem 2rem;
+    background-color: var(--color--gray);
+    color: var(--color--light-brown);
+    font-weight: 600;
+    font-size: 15px;
+    border-radius: 12px;
+    border: 2px var(--color--light-brown) solid;
+}
+
+#newbook:hover {
+    background-color: var(--color--dark-brown);
+}
+
+/* || FOOTER */
+.footer {
+    background-color: var(--color--brown);
+    color: var(--color--black);
+    padding: 20px 30px;
+    display: flex;
+    justify-content: center;
+}
+
+/* || CONTENT */
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-self: flex-start;
+    flex-grow: 1;
+    gap: 20px;
+    padding: 10px 30px;
+}
+
+.hidden {
     display: none;
 }
 
 
 
-.bookcard, .booklist-header{
+
+
+.bookcard,
+.booklist-header {
     display: grid;
-    grid-template-columns: minmax(10%,3fr) minmax(5%,2fr) 1fr 1fr 1fr;
+    grid-template-columns: minmax(10%, 3fr) minmax(5%, 2fr) 1fr 1fr 1fr;
+    gap: 20px;
 }
 
-.booklist-header{
+.booklist-header {
     font-weight: 700;
 }
 
+.centered{
+    justify-self: center;
+}
 
-h1,h2,h3,h4,h5,h6 {
+.right-align{
+    justify-self: end;
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: 'Cormorant Garamond', serif;
     font-weight: 400;
+}
+
+body>h1 {
+    font-weight: 1000;
+    font-size: 32px;
 }
 
 .button {
