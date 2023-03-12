@@ -1,3 +1,15 @@
+:root{
+    --color--gray: #9B9A94;
+    --color--brown: #E0CBC4;
+    --color--light-brown: #EBE4DE;
+    --color--black: #131310;
+}
+
+body{
+    background-color: var(--color--light-brown);
+}
+
+
 .hidden{
     display: none;
 }
@@ -7,4 +19,22 @@
 .bookcard{
     display: grid;
     grid-template-columns: minmax(10%,3fr) minmax(5%,2fr) 1fr 1fr 1fr;
+}
+
+body {
+    font-family: 'Khula', sans-serif;
+    font-weight: 400;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+}
+
+.button {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
 }
