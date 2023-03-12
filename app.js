@@ -26,12 +26,39 @@ function addBookToLibrary(b) {
   return myLibrary.push(b);
 }
 
+function bookListHeader() {
+  let booklist = document.querySelector("#booklist");
+  let header = document.createElement("div");
+  header.classList.add("booklist-header");
+
+  let testBook = new Book("T", "T", 1, true);
+  Object.keys(testBook).forEach((key) => {
+    if (!(typeof testBook[key] === "function")) {
+      // Only add non-function properties
+      let newp = document.createElement("p");
+      newp.textContent = `${key.toUpperCase()}`;
+      newp.classList.add(key);
+      header.appendChild(newp);
+    }
+  });
+
+  let buttonsHeader = "Actions";
+  let newp = document.createElement("p");
+  newp.textContent = `${buttonsHeader.toUpperCase()}`;
+  header.appendChild(newp);
+  booklist.appendChild(header);
+}
+
 function displayBooks() {
   // Clear current display
   let booklist = document.querySelector("#booklist");
   while (booklist.firstChild) {
     booklist.removeChild(booklist.lastChild);
   }
+
+  // Add header
+  bookListHeader();
+
 
   // Add an entry for each book
   let idx = 0;

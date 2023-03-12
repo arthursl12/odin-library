@@ -6,6 +6,8 @@
 }
 
 body{
+    font-family: 'Khula', sans-serif;
+    font-weight: 400;
     background-color: var(--color--light-brown);
 }
 
@@ -16,15 +18,15 @@ body{
 
 
 
-.bookcard{
+.bookcard, .booklist-header{
     display: grid;
     grid-template-columns: minmax(10%,3fr) minmax(5%,2fr) 1fr 1fr 1fr;
 }
 
-body {
-    font-family: 'Khula', sans-serif;
-    font-weight: 400;
+.booklist-header{
+    font-weight: 700;
 }
+
 
 h1,h2,h3,h4,h5,h6 {
     font-family: 'Cormorant Garamond', serif;
