@@ -1,4 +1,4 @@
-let myLibrary = [];
+const myLibrary = [];
 
 function Book(title, author, pages, read) {
   this.title = title;
@@ -13,13 +13,13 @@ function Book(title, author, pages, read) {
     } else {
       readString = "not read yet";
     }
-    let str = `${this.title} by ${this.author}, ${this.pages} pages, ${readString}`;
+    const str = `${this.title} by ${this.author}, ${this.pages} pages, ${readString}`;
     return str;
   };
 
   this.toggleRead = () => {
-    this.read = this.read ? false : true;
-  }
+    this.read = !this.read;
+  };
 }
 
 function addBookToLibrary(b) {
@@ -27,15 +27,15 @@ function addBookToLibrary(b) {
 }
 
 function bookListHeader() {
-  let booklist = document.querySelector("#booklist");
-  let header = document.createElement("div");
+  const booklist = document.querySelector("#booklist");
+  const header = document.createElement("div");
   header.classList.add("booklist-header");
 
-  let testBook = new Book("T", "T", 1, true);
+  const testBook = new Book("T", "T", 1, true);
   Object.keys(testBook).forEach((key) => {
     if (!(typeof testBook[key] === "function")) {
       // Only add non-function properties
-      let newp = document.createElement("p");
+      const newp = document.createElement("p");
       newp.textContent = `${key.toUpperCase()}`;
       newp.classList.add(key);
 
@@ -46,8 +46,8 @@ function bookListHeader() {
     }
   });
 
-  let buttonsHeader = "Actions";
-  let newp = document.createElement("p");
+  const buttonsHeader = "Actions";
+  const newp = document.createElement("p");
   newp.textContent = `${buttonsHeader.toUpperCase()}`;
   header.appendChild(newp);
   booklist.appendChild(header);
@@ -55,7 +55,7 @@ function bookListHeader() {
 
 function displayBooks() {
   // Clear current display
-  let booklist = document.querySelector("#booklist");
+  const booklist = document.querySelector("#booklist");
   while (booklist.firstChild) {
     booklist.removeChild(booklist.lastChild);
   }
@@ -63,20 +63,27 @@ function displayBooks() {
   // Add header
   bookListHeader();
 
-
   // Add an entry for each book
   let idx = 0;
   myLibrary.forEach((book) => {
-    let bookcard = document.createElement("div");
+    const bookcard = document.createElement("div");
     bookcard.classList.add("bookcard");
-    bookcard.setAttribute('data-book-index', idx);
+    bookcard.setAttribute("data-book-index", idx);
 
     // Loop through all properties of Book
     Object.keys(book).forEach((key) => {
       if (!(typeof book[key] === "function")) {
         // Only add non-function properties
-        let newp = document.createElement("p");
-        newp.textContent = `${book[key]}`;
+        const newp = document.createElement("p");
+
+        console.log(typeof book[key]);
+        console.log(typeof book[key] === "boolean");
+        if (typeof book[key] === "boolean") {
+          newp.textContent = book[key] ? "Yes" : "No";
+        } else {
+          newp.textContent = `${book[key]}`;
+        }
+
         newp.classList.add(key);
         if (key === "pages") {
           newp.classList.add("right-align");
@@ -86,17 +93,17 @@ function displayBooks() {
     });
 
     // Add buttons div to remove and read
-    let buttonDiv = document.createElement("div");
+    const buttonDiv = document.createElement("div");
     buttonDiv.classList.add("entry-buttons");
-  
+
     let newb = document.createElement("button");
     newb.textContent = "❌";
-    newb.addEventListener('click', removeBook);
+    newb.addEventListener("click", removeBook);
     buttonDiv.appendChild(newb);
 
     newb = document.createElement("button");
-    newb.textContent = book.read ? "📖" : "📕";
-    newb.addEventListener('click', eventToggleRead);
+    newb.textContent = book.read ? "📕" : "📖";
+    newb.addEventListener("click", eventToggleRead);
     buttonDiv.appendChild(newb);
 
     bookcard.appendChild(buttonDiv);
@@ -108,22 +115,22 @@ function displayBooks() {
 
 function removeBook(e) {
   // Find index stored in bookcard data attribute
-  let button = e.target;
-  let buttonContainer = button.parentElement;
-  let bookcard = buttonContainer.parentElement;
-  let idx = bookcard.dataset.bookIndex;
+  const button = e.target;
+  const buttonContainer = button.parentElement;
+  const bookcard = buttonContainer.parentElement;
+  const idx = bookcard.dataset.bookIndex;
 
   // Remove said index from library and update display
-  myLibrary.splice(idx, 1); // Remove ONE element, starting on index 'idx' 
+  myLibrary.splice(idx, 1); // Remove ONE element, starting on index 'idx'
   displayBooks();
 }
 
 function eventToggleRead(e) {
   // Find index stored in bookcard data attribute
-  let button = e.target;
-  let buttonContainer = button.parentElement;
-  let bookcard = buttonContainer.parentElement;
-  let idx = bookcard.dataset.bookIndex;
+  const button = e.target;
+  const buttonContainer = button.parentElement;
+  const bookcard = buttonContainer.parentElement;
+  const idx = bookcard.dataset.bookIndex;
 
   // Update said book's read state and update display
   myLibrary[idx].toggleRead();
@@ -131,7 +138,7 @@ function eventToggleRead(e) {
 }
 
 function toggleForm(e) {
-  let form = document.querySelector("#newbookform");
+  const form = document.querySelector("#newbookform");
   if (form.classList.contains("hidden")) {
     form.classList.remove("hidden");
   } else {
@@ -139,7 +146,7 @@ function toggleForm(e) {
   }
 }
 function newBookListener() {
-  let btn = document.querySelector("#newbook");
+  const btn = document.querySelector("#newbook");
   console.log("clickevent");
   btn.addEventListener("click", toggleForm);
 }
@@ -150,8 +157,8 @@ function submitBook(e) {
   e.preventDefault(); // Avoid sending to server (default behaviour)
   console.log(e);
 
-  let form = document.querySelector("#newbookform");
-  formData = new FormData(form);
+  const form = document.querySelector("#newbookform");
+  const formData = new FormData(form);
   for (const p of formData.entries()) {
     console.log(p);
   }
@@ -165,22 +172,21 @@ function submitBook(e) {
   }
   form.reset();
 
-  let newBook = new Book(formData.get("booktitle"), formData.get("bookauthor"), formData.get("bookpages"), bookread);
+  const newBook = new Book(
+    formData.get("booktitle"),
+    formData.get("bookauthor"),
+    formData.get("bookpages"),
+    bookread
+  );
   addBookToLibrary(newBook);
   displayBooks();
 }
 
 function submitFormListener() {
-  let form = document.querySelector("#newbookform");
+  const form = document.querySelector("#newbookform");
   form.addEventListener("submit", submitBook);
 }
 submitFormListener();
-
-
-
-
-
-
 
 addBookToLibrary(new Book("The Hobbit", "J.R.R Tolkien", 295, false));
 addBookToLibrary(

@@ -4,7 +4,10 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond:400,700|Khula" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css?family=Cormorant+Garamond:400,700|Khula"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
     <script src="app.js" defer></script>
     <title>Library Project</title>
@@ -17,40 +20,48 @@
       </div>
     </div>
     <div class="content">
-      
       <form id="newbookform" action="submit" class="hidden">
         <div class="form-row">
           <div class="form-field">
             <label name="booktitle">Title:</label>
-            <input type="text" name="booktitle" 
-              placeholder="The Hobbit" minlength="1" required>
+            <input
+              type="text"
+              name="booktitle"
+              placeholder="The Hobbit"
+              minlength="1"
+              required
+            />
           </div>
         </div>
         <div class="form-row">
           <div class="form-field">
             <label name="bookauthor">Author:</label>
-            <input type="text" name="bookauthor" placeholder="J.R.R Tolkien" minlength="1" required>
+            <input
+              type="text"
+              name="bookauthor"
+              placeholder="J.R.R Tolkien"
+              minlength="1"
+              required
+            />
           </div>
         </div>
         <div class="form-row">
           <div class="form-field">
             <label name="bookpages"># of pages:</label>
-            <input type="number" name="bookpages" placeholder="320" required>
+            <input type="number" name="bookpages" placeholder="320" required />
           </div>
         </div>
         <div class="form-row">
           <div class="form-field">
             <label name="bookread">Already read?</label>
-            <input type="checkbox" name="bookread">
+            <input type="checkbox" name="bookread" />
           </div>
         </div>
-        <input id="submitform" type="submit" value="Submit">
+        <input id="submitform" type="submit" value="Submit" />
       </form>
       <div id="booklist">Test</div>
     </div>
-    
-    <div class="footer">
-      Assignment for The Odin Project
-    </div>
+
+    <div class="footer">Assignment for The Odin Project</div>
   </body>
 </html>
