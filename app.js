@@ -90,12 +90,12 @@ function displayBooks() {
     buttonDiv.classList.add("entry-buttons");
   
     let newb = document.createElement("button");
-    newb.textContent = "Remove";
+    newb.textContent = "❌";
     newb.addEventListener('click', removeBook);
     buttonDiv.appendChild(newb);
 
     newb = document.createElement("button");
-    newb.textContent = "Read";
+    newb.textContent = book.read ? "📖" : "📕";
     newb.addEventListener('click', eventToggleRead);
     buttonDiv.appendChild(newb);
 
