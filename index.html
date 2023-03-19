@@ -16,48 +16,52 @@
     <div class="header">
       <h1>Simple Library</h1>
       <div class="newbookcontainer">
-        <button id="newbook">New Book</button>
+        <button id="newbook" class="brown-button">New Book</button>
       </div>
     </div>
     <div class="content">
       <form id="newbookform" action="submit" class="hidden">
         <div class="form-row">
-          <div class="form-field">
-            <label name="booktitle">Title:</label>
-            <input
-              type="text"
-              name="booktitle"
-              placeholder="The Hobbit"
-              minlength="1"
-              required
-            />
-          </div>
+          <label name="booktitle">Title:</label>
+          <input
+            type="text"
+            name="booktitle"
+            placeholder="The Hobbit"
+            minlength="1"
+            required
+          />
         </div>
         <div class="form-row">
-          <div class="form-field">
-            <label name="bookauthor">Author:</label>
-            <input
-              type="text"
-              name="bookauthor"
-              placeholder="J.R.R Tolkien"
-              minlength="1"
-              required
-            />
-          </div>
+          <label name="bookauthor">Author:</label>
+          <input
+            type="text"
+            name="bookauthor"
+            placeholder="J.R.R Tolkien"
+            minlength="1"
+            required
+          />
         </div>
         <div class="form-row">
-          <div class="form-field">
-            <label name="bookpages"># of pages:</label>
-            <input type="number" name="bookpages" placeholder="320" required />
-          </div>
+          <label name="bookpages"># of pages:</label>
+          <input
+            type="number"
+            inputmode="numeric"
+            name="bookpages"
+            placeholder="320"
+            min="1"
+            required
+          />
         </div>
         <div class="form-row">
-          <div class="form-field">
-            <label name="bookread">Already read?</label>
-            <input type="checkbox" name="bookread" />
-          </div>
+          <label name="bookread">Already read?</label>
+          <input type="checkbox" name="bookread" />
         </div>
-        <input id="submitform" type="submit" value="Submit" />
+        <input
+          id="submitform"
+          class="brown-button"
+          type="submit"
+          value="Submit"
+        />
       </form>
       <div id="booklist">Test</div>
     </div>

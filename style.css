@@ -7,7 +7,6 @@
   --color--black: #131310;
   --color--white--faint: rgba(255, 255, 255, 50%);
   --color--white: #ffffff;
-
 }
 
 body {
@@ -31,8 +30,6 @@ h6 {
   font-family: "Cormorant Garamond", serif;
   font-weight: 400;
 }
-
-
 
 body > h1 {
   font-weight: 1000;
@@ -58,12 +55,19 @@ body > h1 {
 #newbook {
   align-self: flex-start;
   padding: 0.5rem 2rem;
-  background-color: var(--color--gray);
-  color: var(--color--light-brown);
   font-weight: 600;
   font-size: 15px;
+}
+
+.brown-button {
+  background-color: var(--color--gray);
+  color: var(--color--light-brown);
   border-radius: 12px;
   border: 2px var(--color--light-brown) solid;
+}
+
+.brown-button:hover {
+  background-color: var(--color--dark-brown);
 }
 
 #newbook:hover {
@@ -88,8 +92,6 @@ body > h1 {
   gap: 20px;
   padding: 10px 30px;
 }
-
-
 
 /* || booklist */
 .bookcard,
@@ -127,7 +129,7 @@ body > h1 {
   letter-spacing: 0px;
   flex-grow: 1;
 
-  min-height: 2rem;;
+  min-height: 2rem;
   min-width: 2rem;
   max-height: 2rem;
   max-width: 3rem;
@@ -143,30 +145,65 @@ body > h1 {
 #newbookform {
   visibility: visible;
   opacity: 1;
-  transition: 0.1s linear all;
+  transition: 0.1s ease-in-out all;
   margin-top: -30px;
-
 
   position: absolute;
   z-index: 10;
   background-color: var(--color--white);
-  padding: 10px;
+  padding: 15px 20px;
   align-self: end;
-}
+  border-radius: 10px;
 
-#newbookform::before {
-    content: "";
-    position: absolute;
-    transform: rotate(45deg);
-    background-color: var(--color--white);
-    padding: 5px;
-    z-index: 0;
-    left: 70%;
-    top: -5px;
-  }
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: 0.3rem;
+
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
+}
 
 #newbookform.hidden {
   visibility: hidden;
   opacity: 0;
   transition: 0.1s linear all;
+}
+
+/* Tooltip-like baloon */
+#newbookform::before {
+  content: "";
+  position: absolute;
+  transform: rotate(45deg);
+  background-color: var(--color--white);
+  padding: 5px;
+  z-index: 0;
+  left: 75%;
+  top: -5px;
+}
+
+.form-row {
+  grid-column: 1 / 2;
+  display: grid;
+  grid-template-columns: minmax(80px, 1fr) 2fr;
+}
+
+.form-field > label {
+  grid-column: 1 / 1;
+}
+
+.form-field > input {
+  grid-column: 2 / 2;
+}
+
+#submitform {
+  grid-column: 1 / 2;
+  justify-self: center;
+
+  padding: 0.5rem 1rem;
+  font-weight: 400;
+  font-size: 15px;
+  width: 40%;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
 }

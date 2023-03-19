@@ -11,15 +11,17 @@
   },
   "rules": {
     "no-console": "off",
-    "quotes": [
-        "error",
-        "double"
-    ],
+    "quotes": ["error", "double"],
     "semi": ["error", "always"],
     "eqeqeq": "off",
-    "no-restricted-syntax": ["error", "ForInStatement", "LabeledStatement", "WithStatement"],
+    "no-restricted-syntax": [
+      "error",
+      "ForInStatement",
+      "LabeledStatement",
+      "WithStatement"
+    ],
     "no-useless-escape": ["error"],
-    "no-plusplus":"off",
+    "no-plusplus": "off",
     "no-unused-vars": "warn",
     "class-methods-use-this": "warn",
     "consistent-return": "warn",

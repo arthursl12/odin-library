@@ -140,11 +140,6 @@ function eventToggleRead(e) {
 function toggleForm(e) {
   const form = document.querySelector("#newbookform");
   form.classList.toggle("hidden");
-  // if (form.classList.contains("hidden")) {
-  //   form.classList.remove("hidden");
-  // } else {
-  //   form.classList.add("hidden");
-  // }
 }
 function newBookListener() {
   const btn = document.querySelector("#newbook");
