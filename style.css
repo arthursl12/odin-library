@@ -1,10 +1,13 @@
+/* GENERAL */
 :root {
   --color--gray: #9b9a94;
   --color--dark-brown: #978782;
   --color--brown: #e0cbc4;
   --color--light-brown: #ebe4de;
   --color--black: #131310;
-  --color--white: rgba(255, 255, 255, 50%);
+  --color--white--faint: rgba(255, 255, 255, 50%);
+  --color--white: #ffffff;
+
 }
 
 body {
@@ -17,6 +20,23 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 400;
+}
+
+
+
+body > h1 {
+  font-weight: 1000;
+  font-size: 32px;
 }
 
 /* || HEADER */
@@ -69,9 +89,7 @@ body {
   padding: 10px 30px;
 }
 
-.hidden {
-  display: none;
-}
+
 
 /* || booklist */
 .bookcard,
@@ -91,21 +109,6 @@ body {
 
 .right-align {
   justify-self: end;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: "Cormorant Garamond", serif;
-  font-weight: 400;
-}
-
-body > h1 {
-  font-weight: 1000;
-  font-size: 32px;
 }
 
 .entry-buttons {
@@ -130,8 +133,40 @@ body > h1 {
   max-width: 3rem;
   padding: 1px 1px;
 
-  background-color: var(--color--white);
+  background-color: var(--color--white--faint);
   border-radius: 0.8rem;
   aspect-ratio: 1;
   border-color: rgba(255, 255, 255, 50%);
+}
+
+/* || FORM */
+#newbookform {
+  visibility: visible;
+  opacity: 1;
+  transition: 0.1s linear all;
+  margin-top: -30px;
+
+
+  position: absolute;
+  z-index: 10;
+  background-color: var(--color--white);
+  padding: 10px;
+  align-self: end;
+}
+
+#newbookform::before {
+    content: "";
+    position: absolute;
+    transform: rotate(45deg);
+    background-color: var(--color--white);
+    padding: 5px;
+    z-index: 0;
+    left: 70%;
+    top: -5px;
+  }
+
+#newbookform.hidden {
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.1s linear all;
 }
